@@ -22,7 +22,7 @@ class MovingPictures < Thor
   def mp4_transcode(video_file)
     output = options.output_file ? options.output_file : File.basename(video_file).gsub(File.extname(video_file),'.mp4')
     if File.exists?(video_file)
-      cmd = "ffmpeg  -i #{video_file} -ar 22050 -vcodec mpeg4 #{output}"
+      cmd = "ffmpeg  -i #{video_file} -ar 22050 -f mp4 #{output}"
       puts "executing #{cmd}"
       `#{cmd}`
     else
