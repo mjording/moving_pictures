@@ -23,7 +23,6 @@ class MovingPictures < Thor
     output = options.output_file ? options.output_file : File.basename(video_file).gsub(File.extname(video_file),'.mp4')
     if File.exists?(video_file)
       cmd = "ffmpeg  -i #{video_file} -ar 22050 -vcodec mpeg4 #{output}"
-       # "ffmpeg -i #{video_file}  -acodec aac -ab 128kb -vcodec mpeg4 -b 1200kb -mbd 2 -flags +4mv+trell -aic 2 -cmp 2 -subcmp 2 -s 320x180 -title X #{output}"
       puts "executing #{cmd}"
       `#{cmd}`
     else
